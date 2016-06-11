@@ -1,20 +1,29 @@
+var webpack = require('webpack');
+
 module.exports = {
-  entry: './main.js',
+  entry: './client/main.js',
   output: {
-    path: './',
-    filename: 'index.js',
+    path: './client',
+    filename: 'bundle.js',
   },
   devServer: {
     inline: true,
     port: 8000,
+    hot: true,
   },
   module: {
     loaders: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel',
-      }
-    ],
-  }
+    {
+      test: /\.jsx?$/,
+      exclude: /(node_modules|bower_components)/,
+      loader: 'babel',
+    }
+  ]
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()  
+  ],
+  resolve: {
+    extensions: ['', '.js', '.jsx']
+  },
 };
