@@ -15,11 +15,6 @@ const User = sequelize.define('users', {
     field: 'password',
   },
 
-  salt: {
-    type: Sequelize.STRING,
-    field: 'salt',
-  },
-
   firstName: {
     type: Sequelize.STRING,
     field: 'first_name' 

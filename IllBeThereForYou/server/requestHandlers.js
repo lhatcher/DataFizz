@@ -9,22 +9,9 @@ const User = require('./models/user');
 module.exports = {
 
   // GET HANDLERS
-  testGet: (req, res) => {
-    console.log('endpoint hit!');
-    // res.send('Message from the server');
-    res.redirect('/login')
-  },
+  
 
   // POST HANDLERS
-  testPost: (req, res) => {
-    let username = req.body.username;
-    let password = req.body.password;
-    let email = req.body.email;
-
-    console.log(username, password, email);
-    res.sendStatus(200);
-  },
-
   createUser: (req, res) => {
     let username = req.body.username;
     let password = req.body.password;
@@ -33,10 +20,10 @@ module.exports = {
     let email = req.body.email;
 
     User.sync({force: false}).then(() => {
-
       User.find({ where: {username: username} })
         .then( (user) => {
           if ( user ) {
+            console.log('ERROR: That username is already in the database.')
             res.sendStatus(302);
           } else {
             bcrypt.genSalt(10, (err, salt) => {
@@ -47,7 +34,6 @@ module.exports = {
                       return User.create({
                         username: username,
                         password: hash,
-                        salt: salt,
                         firstName: firstName,
                         lastName: lastName,
                         email: email,
@@ -67,6 +53,31 @@ module.exports = {
     });
   },
 
+  login: (req, res) => {
+    let username = req.body.username;
+    let password = req.body.password;
+
+    User.find({ where: {username: username} })
+      .then( (user) => {
+        if ( user ) {
+          bcrypt.compare(password, user.password, (err, success) => {
+            if ( success ) {
+              res.send('Success.')
+            } else {
+              console.log('ERROR: The password was incorrect. ');
+            }
+          });
+        } else {
+          console.log("ERROR: That username does not exist. ");
+          res.send('<h3> ERROR: That username does not exist. </h3>');
+        }
+      })
+  },
+
 };
+
+
+
+
 
 
