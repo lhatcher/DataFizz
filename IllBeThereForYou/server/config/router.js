@@ -8,4 +8,10 @@ module.exports = (app, express) => {
   // POST REQUESTS
   app.post('/api/signup', handlers.createUser);
   app.post('/api/login', handlers.login);
+
+  // TOKEN VERIFICATION MIDDLEWARE
+  app.use( (req, res, next) => {
+    let token = req.body.authToken;
+
+  });
 };

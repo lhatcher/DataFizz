@@ -1,10 +1,17 @@
 'use strict';
+const express = require('express');
+const app = express();
+const sequelize = require('./mysql_connection');
+const secret = require('./config.js').APP_SECRET;
 
-const sequelize = require('./connection');
+const redisClient = require('./redis_connection');
+
+const jwt = require('jwt-simple');
+const moment = require('moment');
 
 const bcrypt = require('bcrypt');
 
-const User = require('./models/user');
+const User = require('../models/user');
 
 module.exports = {
 
@@ -23,7 +30,7 @@ module.exports = {
       User.find({ where: {username: username} })
         .then( (user) => {
           if ( user ) {
-            console.log('ERROR: That username is already in the database.')
+            console.log('ERROR: That username is already in the database.');
             res.sendStatus(302);
           } else {
             bcrypt.genSalt(10, (err, salt) => {
@@ -61,10 +68,23 @@ module.exports = {
       .then( (user) => {
         if ( user ) {
           bcrypt.compare(password, user.password, (err, success) => {
+
             if ( success ) {
-              res.send('Success.')
+
+              let token = jwt.encode({
+                iss: user.id,
+              }, secret);
+
+
+
+              res.json({
+                success: true,
+                authToken: token,
+              });
+
             } else {
               console.log('ERROR: The password was incorrect. ');
+              res.sendStatus(500);
             }
           });
         } else {

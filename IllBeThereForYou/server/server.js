@@ -13,14 +13,14 @@ app.use( (req, res, next) => {
     next();
 });
 
-const sequelize = require('./connection');
+const sequelize = require('./config/mysql_connection');
 sequelize.authenticate().then( (err) => {
     console.log('SUCCESS: Connection to the database has been established.');
   }).catch( (err) => {
     console.log('ERROR: Unable to connect to the database:', err);
   });
 
-require('./router')(app,express);
+require('./config/router')(app,express);
 
 app.listen(3000, () => {
   console.log('Bookface API server listening on port 3000.');
