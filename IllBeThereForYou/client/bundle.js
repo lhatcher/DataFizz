@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "492c7da1bea2e89e6d62"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "e0990f03dc1c25f433f6"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -23294,8 +23294,8 @@
 	  _createClass(App, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      _axios2.default.get('http://localhost:3000/test').then(function (response) {
-	        console.log(response);
+	      _axios2.default.get('http://localhost:3000/api/test').then(function (response) {
+	        console.log('------', response);
 	      });
 	    }
 	  }, {

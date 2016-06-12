@@ -4,9 +4,9 @@ import axios from 'axios';
 class App extends React.Component {
 
   componentDidMount() {
-    axios.get('http://localhost:3000/test')
+    axios.get('http://localhost:3000/api/test')
       .then(function (response) {
-        console.log(response);
+        console.log('------', response);
       });
   }
 

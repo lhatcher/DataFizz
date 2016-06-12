@@ -1,5 +1,10 @@
 const express = require('express');
 const app = express();
+
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({limit: '5mb'}));
+
 app.use( (req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -8,28 +13,12 @@ app.use( (req, res, next) => {
     next();
 });
 
-
 const sequelize = require('./connection');
 sequelize.authenticate().then( (err) => {
-    console.log('Connection has been established successfully.');
+    console.log('SUCCESS: Connection to the database has been established.');
   }).catch( (err) => {
-    console.log('Unable to connect to the database:', err);
+    console.log('ERROR: Unable to connect to the database:', err);
   });
-
-const User = require('./models/user');
-
-User.sync({force: true}).then(() => {
-  return User.create({
-    firstName: 'John',
-    lastName: 'Hancock'
-  });
-});
-User.sync({force: true}).then(() => {
-  return User.create({
-    firstName: 'Dave',
-    lastName: 'Smith'
-  });
-});
 
 require('./router')(app,express);
 
