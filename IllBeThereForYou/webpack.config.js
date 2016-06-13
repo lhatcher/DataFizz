@@ -17,6 +17,10 @@ module.exports = {
       test: /\.jsx?$/,
       exclude: /(node_modules|bower_components)/,
       loader: 'babel',
+    },
+    {
+      test: /\.css$/, 
+      loader: "style-loader!css-loader" 
     }
   ]
   },

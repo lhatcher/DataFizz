@@ -5,9 +5,24 @@ import { bindActionCreators } from 'redux';
 
 
 class Login extends React.Component {
-  render() {
-    return <h2>Login View</h2>
+
+  authenticate() {
+
   }
+
+  render() {
+    return (
+      <div className="container">
+        <h1>Login View</h1>
+      </div>
+    );
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    login: login,
+  }, dispatch);
 };
 
 export default Login;

@@ -1,16 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import Login from './Login';
 import Signup from './Signup';  
-import Feed from './Feed';  
+import Home from './Home';  
 import { login } from '../actions/userActions';
+
+require('../styles/style.css');
 
 class App extends React.Component {
   render() {
     return (
       <div>
-        {this.props.user.success ? <Feed /> : <Login />}
+        {this.props.user.success ? <Home /> : <Login />}
       </div>
     );
   }
@@ -22,15 +23,4 @@ const mapStateToProps = (state) => {
   }
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({
-    login: login,
-  }, dispatch);
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
-// <div>
-//   <h1>Hello, {this.props.user.username} </h1>
-//   <p> {this.props.user.firstName}, {this.props.user.lastName} </p> 
-//   <button onClick={this.test.bind(this)}>Login</button>
-// </div>
+export default connect(mapStateToProps)(App);

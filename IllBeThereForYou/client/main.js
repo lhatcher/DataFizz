@@ -9,9 +9,9 @@ import { syncHistory } from 'redux-simple-router';
 
 import appReducer from './reducers/appReducer';
 import App from './views/App';
+import Home from './views/Home';
 import Login from './views/Login';
 import Signup from './views/Signup';
-import Feed from './views/Feed';
 import { requireAuth } from './components/AuthComponent';
 
 const reduxRouterMiddleware = syncHistory(hashHistory);
@@ -26,7 +26,8 @@ ReactDOM.render(
       <Route path="/" >
         <IndexRoute component={Login} />
         <Route path="signup" component={Signup} />
-        <Route path="feed" component={ requireAuth(Feed) } />
+        <Route path="login" component={Login} />
+        <Route path="home" component={ requireAuth(Home) } />
       </Route>
     </Router>
   </Provider>, 
