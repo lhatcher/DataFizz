@@ -30,7 +30,11 @@ module.exports = {
         .then( (user) => {
           if ( user ) {
             console.log('ERROR: That username is already in the database.');
-            res.sendStatus(302);
+            res.json({
+              success: false,
+              message: 'That user name is already in the database.',
+            });
+            res.sendStatus(401);
           } else {
             bcrypt.genSalt(10, (err, salt) => {
               if ( salt ) {
@@ -79,11 +83,14 @@ module.exports = {
 
               res.json({
                 success: true,
+                username: user.username,
+                firstName: user.firstName,
+                lastName: user.lastName,
                 authToken: token,
               });
             } else {
               console.log('ERROR: The password was incorrect. ');
-              res.sendStatus(500);
+              res.sendStatus(401);
             }
           });
         } else {
