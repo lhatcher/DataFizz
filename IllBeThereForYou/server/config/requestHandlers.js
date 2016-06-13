@@ -2,21 +2,20 @@
 const express = require('express');
 const app = express();
 const sequelize = require('./mysql_connection');
-const secret = require('./config.js').APP_SECRET;
-
-const redisClient = require('./redis_connection');
-
-const jwt = require('jwt-simple');
-const moment = require('moment');
-
 const bcrypt = require('bcrypt');
-
 const User = require('../models/user');
+const utils = require('./utils');
 
 module.exports = {
-
   // GET HANDLERS
-  
+  test: (req, res) => {
+    console.log('Authentication System is working!');
+    res.send('Success!!!');
+  },  
+
+  getPosts: (req, res) => {
+    res.json({success: true});
+  },
 
   // POST HANDLERS
   createUser: (req, res) => {
@@ -46,7 +45,13 @@ module.exports = {
                         email: email,
                       });
                     });
-                    res.sendStatus(200);
+                    let token = utils.createToken(user);
+                    utils.startSession(user, token);
+
+                    res.json({
+                      success: true,
+                      authToken: token,
+                    });
                   } else {
                     console.log('ERROR: A problem occurred while hashing password.');
                   }
@@ -68,20 +73,14 @@ module.exports = {
       .then( (user) => {
         if ( user ) {
           bcrypt.compare(password, user.password, (err, success) => {
-
             if ( success ) {
-
-              let token = jwt.encode({
-                iss: user.id,
-              }, secret);
-
-
+              let token = utils.createToken(user);
+              utils.startSession(user, token);
 
               res.json({
                 success: true,
                 authToken: token,
               });
-
             } else {
               console.log('ERROR: The password was incorrect. ');
               res.sendStatus(500);
@@ -91,9 +90,14 @@ module.exports = {
           console.log("ERROR: That username does not exist. ");
           res.send('<h3> ERROR: That username does not exist. </h3>');
         }
-      })
+      });
   },
 
+  logout: (req, res) => {
+    let username = req.body.username;
+    utils.destroySession(username);
+    res.json({success: true});
+  },
 };
 
 
