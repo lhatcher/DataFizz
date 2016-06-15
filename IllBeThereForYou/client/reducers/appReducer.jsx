@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
-import userReducer from './userReducer';
 import { routeReducer } from 'redux-simple-router';
+import userInfo from './loginReducer';
+import posts from './postReducer';
 
 const appReducer = combineReducers({
   routing: routeReducer,
-  user: userReducer,
+  user: userInfo,
+  posts: posts,
 });
 
 export default appReducer;

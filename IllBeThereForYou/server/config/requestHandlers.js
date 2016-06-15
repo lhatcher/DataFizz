@@ -4,6 +4,8 @@ const app = express();
 const sequelize = require('./mysql_connection');
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
+const Post = require('../models/post');
+const Friend = require('../models/friend');
 const utils = require('./utils');
 
 module.exports = {
@@ -14,7 +16,13 @@ module.exports = {
   },  
 
   getPosts: (req, res) => {
-    res.json({success: true});
+    Post.findAll().then( (data) => {
+      res.json(data.reverse());
+    });  
+  },
+
+  getFriends: (req, res) => {
+
   },
 
   // POST HANDLERS
@@ -34,11 +42,12 @@ module.exports = {
               success: false,
               message: 'That user name is already in the database.',
             });
-            res.sendStatus(401);
           } else {
             bcrypt.genSalt(10, (err, salt) => {
               if ( salt ) {
+                console.log('======>> ', user);
                 bcrypt.hash(password, salt, (err, hash) => {
+                  if (err) console.error(err);
                   if ( hash ) {
                     User.sync().then( () => {
                       return User.create({
@@ -47,17 +56,21 @@ module.exports = {
                         firstName: firstName,
                         lastName: lastName,
                         email: email,
+                      }).then((newUser) => {
+                        let token = utils.createToken(newUser);
+                        utils.startSession(newUser, token);
+                        res.json({
+                          success: true,
+                          userId: newUser.id,
+                          username: newUser.username,
+                          firstName: newUser.firstName,
+                          lastName: newUser.lastName,
+                          authToken: token,
+                        });
                       });
                     });
-                    let token = utils.createToken(user);
-                    utils.startSession(user, token);
-
-                    res.json({
-                      success: true,
-                      authToken: token,
-                    });
                   } else {
-                    console.log('ERROR: A problem occurred while hashing password.');
+                    console.log('ERROR: A problem occurred while hashing password.', err);
                   }
                 });
               } else {
@@ -83,6 +96,7 @@ module.exports = {
 
               res.json({
                 success: true,
+                userId: newUser.id,
                 username: user.username,
                 firstName: user.firstName,
                 lastName: user.lastName,
@@ -104,6 +118,60 @@ module.exports = {
     let username = req.body.username;
     utils.destroySession(username);
     res.json({success: true});
+  },
+
+  createPost: (req, res) => {
+    let username = req.body.username;
+    let content = req.body.content;
+
+    User.find({where: {username: username}}).then( (user) => {
+      if ( !user ) {
+        res.json({
+          error: 'An error occurred. Try logging in again. ',
+        });
+      } else {      
+        return Post.create({
+          author: username,
+          content: content,
+          userId: user.id,
+        }).then((post) => {
+          res.json(post.dataValues);
+        });
+      }
+    });
+  },
+
+  addFriend: (req, res) => {
+    let username = req.body.username;
+    let addedFriend = req.body.friend;
+
+    User.find({where: {username: username}})
+      .then((user) => {
+        if ( !user ) {
+          res.json({
+            error: 'An error occurred. Try logging in again. ',
+          });
+        } else {
+          User.find({where: {username: addedFriend}})
+            .then((friend) => {
+              Friend.sync().then(() => {
+                return Friend.create({
+                  userId: friend.dataValues.id,
+                  friend: user.dataValues.username,
+                }).then(() => {
+                  return Friend.create({
+                    userId: user.dataValues.id,
+                    friend: friend.dataValues.username,
+                  });
+                });
+              });
+            }).then((friend) => { 
+              res.json({
+                friend: addedFriend,
+              });
+            });
+        }
+      });
   },
 };
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { hashHistory } from 'react-router';
-// import { pushState } from 'redux-router';
 
 export const requireAuth = (Component) => {
 
@@ -18,8 +17,6 @@ export const requireAuth = (Component) => {
     checkAuth() {
       if (!this.props.user.success) {
         hashHistory.push('/login');
-        // let redirectAfterLogin = this.props.location.pathname;
-        // this.props.dispatch(pushState(null, `/login?next=${redirectAfterLogin}`));
       }
     }
 

@@ -1,12 +1,15 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-// import { login } from './actions/userActions';
-
+import Post from './Post';
 
 class Feed extends React.Component {
+
   render() {
-    return <h2>Feed View</h2>
+    return (
+      <div className="container">
+        <h4>News Feed: </h4>
+        {this.props.posts.map( (post, i) => <Post key={post.id} post={post} />)}
+      </div>
+    );
   }
 };
 
