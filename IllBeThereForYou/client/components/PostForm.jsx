@@ -13,7 +13,7 @@ class PostForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="post-form">
         <h5>Post a thought!</h5>  
         <form action="javascript:void(0)" id="loginForm" onSubmit={this.sendPost.bind(this)}>
           <div className="row">

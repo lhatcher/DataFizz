@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getPosts } from '../actions/getPosts';
+import { getFriends } from '../actions/getFriends';
+
 
 import Navbar from '../components/Navbar';
 import PostForm from '../components/PostForm';
@@ -13,7 +15,9 @@ require('../styles/style.css');
 class Home extends React.Component {
 
   componentWillMount() {
-    this.props.loadPosts();
+    let username = this.props.user.username;
+    this.props.loadFriends(username);
+    this.props.loadPosts(username);
   }
 
   render() {
@@ -29,13 +33,7 @@ class Home extends React.Component {
           <div className="container">
             <div className="row">
               <div className="col-md-2 col-md-offset-2">
-                <FriendList />
-                <p>Steve</p>
-                <p>Bill</p>
-                <p>Fred</p>
-                <p>Sarah</p>
-                <p>Jeb</p>
-                <p>Will</p>
+                <FriendList {...this.props}/>
               </div>
               <div className="col-md-6">
                 <PostForm />
@@ -53,12 +51,14 @@ const mapStateToProps = (state) => {
   return {
     user: state.user,
     posts: state.posts,
+    friends: state.friends,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     loadPosts: getPosts,
+    loadFriends: getFriends,
   }, dispatch);
 };
 

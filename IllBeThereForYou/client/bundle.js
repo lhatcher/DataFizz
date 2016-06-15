@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "2f3f8be02639ff8b9a97"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "436e3a0bbd2faa48b10d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -609,23 +609,23 @@
 
 	var _appReducer2 = _interopRequireDefault(_appReducer);
 
-	var _App = __webpack_require__(260);
+	var _App = __webpack_require__(261);
 
 	var _App2 = _interopRequireDefault(_App);
 
-	var _Home = __webpack_require__(290);
+	var _Home = __webpack_require__(292);
 
 	var _Home2 = _interopRequireDefault(_Home);
 
-	var _Login = __webpack_require__(261);
+	var _Login = __webpack_require__(262);
 
 	var _Login2 = _interopRequireDefault(_Login);
 
-	var _Signup = __webpack_require__(288);
+	var _Signup = __webpack_require__(290);
 
 	var _Signup2 = _interopRequireDefault(_Signup);
 
-	var _AuthComponent = __webpack_require__(300);
+	var _AuthComponent = __webpack_require__(306);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28846,12 +28846,17 @@
 
 	var _postReducer2 = _interopRequireDefault(_postReducer);
 
+	var _friendReducer = __webpack_require__(260);
+
+	var _friendReducer2 = _interopRequireDefault(_friendReducer);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var appReducer = (0, _redux.combineReducers)({
 	  routing: _reduxSimpleRouter.routeReducer,
 	  user: _loginReducer2.default,
-	  posts: _postReducer2.default
+	  posts: _postReducer2.default,
+	  friends: _friendReducer2.default
 	});
 
 	exports.default = appReducer;
@@ -28909,7 +28914,6 @@
 	      return [action.payload.data].concat(_toConsumableArray(state));
 
 	    case 'LOAD_POSTS':
-	      console.log(action.payload.data, '< le data ');
 	      return action.payload.data;
 
 	    default:
@@ -28921,6 +28925,37 @@
 
 /***/ },
 /* 260 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+	var friends = function friends() {
+	  var state = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
+	  var action = arguments[1];
+
+	  switch (action.type) {
+
+	    case 'LOAD_FRIENDS':
+	      return action.payload.data;
+
+	    case 'ADD_FRIEND':
+	      return [action.payload.data].concat(_toConsumableArray(state));
+
+	    default:
+	      return state;
+	  }
+	};
+
+	exports.default = friends;
+
+/***/ },
+/* 261 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28937,15 +28972,15 @@
 
 	var _reactRedux = __webpack_require__(175);
 
-	var _Login = __webpack_require__(261);
+	var _Login = __webpack_require__(262);
 
 	var _Login2 = _interopRequireDefault(_Login);
 
-	var _Signup = __webpack_require__(288);
+	var _Signup = __webpack_require__(290);
 
 	var _Signup2 = _interopRequireDefault(_Signup);
 
-	var _Home = __webpack_require__(290);
+	var _Home = __webpack_require__(292);
 
 	var _Home2 = _interopRequireDefault(_Home);
 
@@ -28989,7 +29024,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(App);
 
 /***/ },
-/* 261 */
+/* 262 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29010,7 +29045,7 @@
 
 	var _reactRouter = __webpack_require__(197);
 
-	var _login = __webpack_require__(262);
+	var _login = __webpack_require__(263);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29020,7 +29055,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(282);
+	__webpack_require__(283);
 
 	var Login = function (_React$Component) {
 	  _inherits(Login, _React$Component);
@@ -29139,7 +29174,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Login);
 
 /***/ },
-/* 262 */
+/* 263 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29149,7 +29184,7 @@
 	});
 	exports.login = undefined;
 
-	var _axios = __webpack_require__(263);
+	var _axios = __webpack_require__(264);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
@@ -29168,25 +29203,25 @@
 	};
 
 /***/ },
-/* 263 */
+/* 264 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(264);
+	module.exports = __webpack_require__(265);
 
 /***/ },
-/* 264 */
+/* 265 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var defaults = __webpack_require__(265);
-	var utils = __webpack_require__(266);
-	var dispatchRequest = __webpack_require__(268);
-	var InterceptorManager = __webpack_require__(277);
-	var isAbsoluteURL = __webpack_require__(278);
-	var combineURLs = __webpack_require__(279);
-	var bind = __webpack_require__(280);
-	var transformData = __webpack_require__(272);
+	var defaults = __webpack_require__(266);
+	var utils = __webpack_require__(267);
+	var dispatchRequest = __webpack_require__(269);
+	var InterceptorManager = __webpack_require__(278);
+	var isAbsoluteURL = __webpack_require__(279);
+	var combineURLs = __webpack_require__(280);
+	var bind = __webpack_require__(281);
+	var transformData = __webpack_require__(273);
 
 	function Axios(defaultConfig) {
 	  this.defaults = utils.merge({}, defaultConfig);
@@ -29275,7 +29310,7 @@
 	axios.all = function all(promises) {
 	  return Promise.all(promises);
 	};
-	axios.spread = __webpack_require__(281);
+	axios.spread = __webpack_require__(282);
 
 	// Provide aliases for supported request methods
 	utils.forEach(['delete', 'get', 'head'], function forEachMethodNoData(method) {
@@ -29303,13 +29338,13 @@
 
 
 /***/ },
-/* 265 */
+/* 266 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(266);
-	var normalizeHeaderName = __webpack_require__(267);
+	var utils = __webpack_require__(267);
+	var normalizeHeaderName = __webpack_require__(268);
 
 	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 	var DEFAULT_CONTENT_TYPE = {
@@ -29381,7 +29416,7 @@
 
 
 /***/ },
-/* 266 */
+/* 267 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -29664,12 +29699,12 @@
 
 
 /***/ },
-/* 267 */
+/* 268 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(266);
+	var utils = __webpack_require__(267);
 
 	module.exports = function normalizeHeaderName(headers, normalizedName) {
 	  utils.forEach(headers, function processHeader(value, name) {
@@ -29682,7 +29717,7 @@
 
 
 /***/ },
-/* 268 */
+/* 269 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -29704,10 +29739,10 @@
 	        adapter = config.adapter;
 	      } else if (typeof XMLHttpRequest !== 'undefined') {
 	        // For browsers use XHR adapter
-	        adapter = __webpack_require__(269);
+	        adapter = __webpack_require__(270);
 	      } else if (typeof process !== 'undefined') {
 	        // For node use HTTP adapter
-	        adapter = __webpack_require__(269);
+	        adapter = __webpack_require__(270);
 	      }
 
 	      if (typeof adapter === 'function') {
@@ -29723,18 +29758,18 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 269 */
+/* 270 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var utils = __webpack_require__(266);
-	var buildURL = __webpack_require__(270);
-	var parseHeaders = __webpack_require__(271);
-	var transformData = __webpack_require__(272);
-	var isURLSameOrigin = __webpack_require__(273);
-	var btoa = (typeof window !== 'undefined' && window.btoa) || __webpack_require__(274);
-	var settle = __webpack_require__(275);
+	var utils = __webpack_require__(267);
+	var buildURL = __webpack_require__(271);
+	var parseHeaders = __webpack_require__(272);
+	var transformData = __webpack_require__(273);
+	var isURLSameOrigin = __webpack_require__(274);
+	var btoa = (typeof window !== 'undefined' && window.btoa) || __webpack_require__(275);
+	var settle = __webpack_require__(276);
 
 	module.exports = function xhrAdapter(resolve, reject, config) {
 	  var requestData = config.data;
@@ -29831,7 +29866,7 @@
 	  // This is only done if running in a standard browser environment.
 	  // Specifically not if we're in a web worker, or react-native.
 	  if (utils.isStandardBrowserEnv()) {
-	    var cookies = __webpack_require__(276);
+	    var cookies = __webpack_require__(277);
 
 	    // Add xsrf header
 	    var xsrfValue = config.withCredentials || isURLSameOrigin(config.url) ?
@@ -29892,12 +29927,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 270 */
+/* 271 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(266);
+	var utils = __webpack_require__(267);
 
 	function encode(val) {
 	  return encodeURIComponent(val).
@@ -29966,12 +30001,12 @@
 
 
 /***/ },
-/* 271 */
+/* 272 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(266);
+	var utils = __webpack_require__(267);
 
 	/**
 	 * Parse headers into an object
@@ -30009,12 +30044,12 @@
 
 
 /***/ },
-/* 272 */
+/* 273 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(266);
+	var utils = __webpack_require__(267);
 
 	/**
 	 * Transform the data for a request or a response
@@ -30035,12 +30070,12 @@
 
 
 /***/ },
-/* 273 */
+/* 274 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(266);
+	var utils = __webpack_require__(267);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -30109,7 +30144,7 @@
 
 
 /***/ },
-/* 274 */
+/* 275 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -30151,7 +30186,7 @@
 
 
 /***/ },
-/* 275 */
+/* 276 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -30175,12 +30210,12 @@
 
 
 /***/ },
-/* 276 */
+/* 277 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(266);
+	var utils = __webpack_require__(267);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -30234,12 +30269,12 @@
 
 
 /***/ },
-/* 277 */
+/* 278 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(266);
+	var utils = __webpack_require__(267);
 
 	function InterceptorManager() {
 	  this.handlers = [];
@@ -30292,7 +30327,7 @@
 
 
 /***/ },
-/* 278 */
+/* 279 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -30312,7 +30347,7 @@
 
 
 /***/ },
-/* 279 */
+/* 280 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -30330,7 +30365,7 @@
 
 
 /***/ },
-/* 280 */
+/* 281 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -30347,7 +30382,7 @@
 
 
 /***/ },
-/* 281 */
+/* 282 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -30380,23 +30415,23 @@
 
 
 /***/ },
-/* 282 */
+/* 283 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(283);
+	var content = __webpack_require__(284);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(287)(content, {});
+	var update = __webpack_require__(289)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(true) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept(283, function() {
-				var newContent = __webpack_require__(283);
+			module.hot.accept(284, function() {
+				var newContent = __webpack_require__(284);
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -30406,13 +30441,14 @@
 	}
 
 /***/ },
-/* 283 */
+/* 284 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(284)();
+	exports = module.exports = __webpack_require__(285)();
 	// imports
-	exports.i(__webpack_require__(285), "");
 	exports.i(__webpack_require__(286), "");
+	exports.i(__webpack_require__(287), "");
+	exports.i(__webpack_require__(288), "");
 
 	// module
 	exports.push([module.id, "", ""]);
@@ -30421,7 +30457,7 @@
 
 
 /***/ },
-/* 284 */
+/* 285 */
 /***/ function(module, exports) {
 
 	/*
@@ -30477,10 +30513,10 @@
 
 
 /***/ },
-/* 285 */
+/* 286 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(284)();
+	exports = module.exports = __webpack_require__(285)();
 	// imports
 
 
@@ -30491,10 +30527,10 @@
 
 
 /***/ },
-/* 286 */
+/* 287 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(284)();
+	exports = module.exports = __webpack_require__(285)();
 	// imports
 
 
@@ -30505,7 +30541,21 @@
 
 
 /***/ },
-/* 287 */
+/* 288 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(285)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\n.post-form {\n  padding: 10px;\n  background-color: white;\n  -webkit-box-shadow: 0px 13px 24px -5px rgba(0,0,0,0.31);\n  -moz-box-shadow: 0px 13px 24px -5px rgba(0,0,0,0.31);\n  box-shadow: 0px 13px 24px -5px rgba(0,0,0,0.31);\n}", ""]);
+
+	// exports
+
+
+/***/ },
+/* 289 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -30757,7 +30807,7 @@
 
 
 /***/ },
-/* 288 */
+/* 290 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30778,7 +30828,7 @@
 
 	var _reactRouter = __webpack_require__(197);
 
-	var _signup = __webpack_require__(289);
+	var _signup = __webpack_require__(291);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30788,7 +30838,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(282);
+	__webpack_require__(283);
 
 	var Signup = function (_React$Component) {
 	  _inherits(Signup, _React$Component);
@@ -30941,7 +30991,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Signup);
 
 /***/ },
-/* 289 */
+/* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30951,7 +31001,7 @@
 	});
 	exports.signup = undefined;
 
-	var _axios = __webpack_require__(263);
+	var _axios = __webpack_require__(264);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
@@ -30973,7 +31023,7 @@
 	};
 
 /***/ },
-/* 290 */
+/* 292 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30992,21 +31042,23 @@
 
 	var _redux = __webpack_require__(182);
 
-	var _getPosts = __webpack_require__(291);
+	var _getPosts = __webpack_require__(293);
 
-	var _Navbar = __webpack_require__(292);
+	var _getFriends = __webpack_require__(294);
+
+	var _Navbar = __webpack_require__(295);
 
 	var _Navbar2 = _interopRequireDefault(_Navbar);
 
-	var _PostForm = __webpack_require__(297);
+	var _PostForm = __webpack_require__(302);
 
 	var _PostForm2 = _interopRequireDefault(_PostForm);
 
-	var _Feed = __webpack_require__(295);
+	var _Feed = __webpack_require__(298);
 
 	var _Feed2 = _interopRequireDefault(_Feed);
 
-	var _FriendList = __webpack_require__(299);
+	var _FriendList = __webpack_require__(304);
 
 	var _FriendList2 = _interopRequireDefault(_FriendList);
 
@@ -31018,7 +31070,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(282);
+	__webpack_require__(283);
 
 	var Home = function (_React$Component) {
 	  _inherits(Home, _React$Component);
@@ -31032,7 +31084,9 @@
 	  _createClass(Home, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      this.props.loadPosts();
+	      var username = this.props.user.username;
+	      this.props.loadFriends(username);
+	      this.props.loadPosts(username);
 	    }
 	  }, {
 	    key: 'render',
@@ -31066,37 +31120,7 @@
 	              _react2.default.createElement(
 	                'div',
 	                { className: 'col-md-2 col-md-offset-2' },
-	                _react2.default.createElement(_FriendList2.default, null),
-	                _react2.default.createElement(
-	                  'p',
-	                  null,
-	                  'Steve'
-	                ),
-	                _react2.default.createElement(
-	                  'p',
-	                  null,
-	                  'Bill'
-	                ),
-	                _react2.default.createElement(
-	                  'p',
-	                  null,
-	                  'Fred'
-	                ),
-	                _react2.default.createElement(
-	                  'p',
-	                  null,
-	                  'Sarah'
-	                ),
-	                _react2.default.createElement(
-	                  'p',
-	                  null,
-	                  'Jeb'
-	                ),
-	                _react2.default.createElement(
-	                  'p',
-	                  null,
-	                  'Will'
-	                )
+	                _react2.default.createElement(_FriendList2.default, this.props)
 	              ),
 	              _react2.default.createElement(
 	                'div',
@@ -31119,20 +31143,22 @@
 	var mapStateToProps = function mapStateToProps(state) {
 	  return {
 	    user: state.user,
-	    posts: state.posts
+	    posts: state.posts,
+	    friends: state.friends
 	  };
 	};
 
 	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 	  return (0, _redux.bindActionCreators)({
-	    loadPosts: _getPosts.getPosts
+	    loadPosts: _getPosts.getPosts,
+	    loadFriends: _getFriends.getFriends
 	  }, dispatch);
 	};
 
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Home);
 
 /***/ },
-/* 291 */
+/* 293 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31142,17 +31168,20 @@
 	});
 	exports.getPosts = undefined;
 
-	var _axios = __webpack_require__(263);
+	var _axios = __webpack_require__(264);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var getPosts = exports.getPosts = function getPosts() {
+	var getPosts = exports.getPosts = function getPosts(username) {
 	  var endpoint = 'http://localhost:3000/api/feed';
 
 	  var request = _axios2.default.get(endpoint, {
-	    token: localStorage.getItem('bookfaceAuthToken')
+	    params: {
+	      username: username,
+	      token: localStorage.getItem('bookfaceAuthToken')
+	    }
 	  }).catch(function (err) {
 	    console.log('An error occured while fetching posts. ');
 	  });
@@ -31164,7 +31193,42 @@
 	};
 
 /***/ },
-/* 292 */
+/* 294 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.getFriends = undefined;
+
+	var _axios = __webpack_require__(264);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var getFriends = exports.getFriends = function getFriends(username) {
+	  var endpoint = 'http://localhost:3000/api/myfriends';
+
+	  var request = _axios2.default.get(endpoint, {
+	    params: {
+	      username: username,
+	      token: localStorage.getItem('bookfaceAuthToken')
+	    }
+	  }).catch(function (err) {
+	    console.log('An error occured while fetching friends. ');
+	  });
+
+	  return {
+	    type: 'LOAD_FRIENDS',
+	    payload: request
+	  };
+	};
+
+/***/ },
+/* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31183,11 +31247,11 @@
 
 	var _redux = __webpack_require__(182);
 
-	var _Logout = __webpack_require__(293);
+	var _Logout = __webpack_require__(296);
 
 	var _Logout2 = _interopRequireDefault(_Logout);
 
-	var _Feed = __webpack_require__(295);
+	var _Feed = __webpack_require__(298);
 
 	var _Feed2 = _interopRequireDefault(_Feed);
 
@@ -31281,7 +31345,7 @@
 	exports.default = Navbar;
 
 /***/ },
-/* 293 */
+/* 296 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31302,9 +31366,9 @@
 
 	var _reactRouter = __webpack_require__(197);
 
-	var _logout = __webpack_require__(294);
+	var _logout = __webpack_require__(297);
 
-	var _Feed = __webpack_require__(295);
+	var _Feed = __webpack_require__(298);
 
 	var _Feed2 = _interopRequireDefault(_Feed);
 
@@ -31369,7 +31433,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Logout);
 
 /***/ },
-/* 294 */
+/* 297 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31379,7 +31443,7 @@
 	});
 	exports.logout = undefined;
 
-	var _axios = __webpack_require__(263);
+	var _axios = __webpack_require__(264);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
@@ -31397,7 +31461,7 @@
 	};
 
 /***/ },
-/* 295 */
+/* 298 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31412,7 +31476,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Post = __webpack_require__(296);
+	var _Post = __webpack_require__(299);
 
 	var _Post2 = _interopRequireDefault(_Post);
 
@@ -31459,10 +31523,10 @@
 	exports.default = Feed;
 
 /***/ },
-/* 296 */
+/* 299 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -31473,6 +31537,10 @@
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _AddFriend = __webpack_require__(300);
+
+	var _AddFriend2 = _interopRequireDefault(_AddFriend);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31492,38 +31560,39 @@
 	  }
 
 	  _createClass(Post, [{
-	    key: "render",
+	    key: 'render',
 	    value: function render() {
 	      var post = this.props.post;
 	      return _react2.default.createElement(
-	        "div",
-	        { className: "container" },
+	        'div',
+	        { className: 'container-fluid' },
 	        _react2.default.createElement(
-	          "div",
-	          { className: "row" },
+	          'div',
+	          { className: 'row' },
 	          _react2.default.createElement(
-	            "div",
-	            { className: "post-container" },
+	            'div',
+	            { className: 'post-container' },
 	            _react2.default.createElement(
-	              "div",
-	              { className: "row" },
+	              'div',
+	              { className: 'row' },
 	              _react2.default.createElement(
-	                "div",
-	                { claName: "col-md-6 text-left" },
-	                "Posted by: ",
+	                'div',
+	                { className: 'col-md-6 text-left' },
+	                'Posted by: ',
 	                post.author
 	              ),
 	              _react2.default.createElement(
-	                "div",
-	                { claName: "col-md-6 text-right" },
+	                'div',
+	                { className: 'col-md-6 text-right' },
 	                post.updatedAt
 	              )
 	            ),
 	            _react2.default.createElement(
-	              "p",
+	              'p',
 	              null,
 	              post.content
-	            )
+	            ),
+	            _react2.default.createElement(_AddFriend2.default, { friend: post.author })
 	          )
 	        )
 	      );
@@ -31538,7 +31607,141 @@
 	exports.default = Post;
 
 /***/ },
-/* 297 */
+/* 300 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _redux = __webpack_require__(182);
+
+	var _reactRedux = __webpack_require__(175);
+
+	var _addFriend = __webpack_require__(301);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var AddFriend = function (_React$Component) {
+	  _inherits(AddFriend, _React$Component);
+
+	  function AddFriend() {
+	    _classCallCheck(this, AddFriend);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(AddFriend).apply(this, arguments));
+	  }
+
+	  _createClass(AddFriend, [{
+	    key: 'componentShouldRender',
+	    value: function componentShouldRender() {
+	      var username = this.props.user.username;
+	      var friend = this.props.friend;
+	      var alreadyFriends = false;
+	      var notMyUsername = friend !== username;
+
+	      this.props.friends.map(function (friendObj) {
+	        if (friendObj.friend === friend) {
+	          alreadyFriends = true;
+	        }
+	      });
+
+	      return !alreadyFriends && notMyUsername;
+	    }
+	  }, {
+	    key: 'requestFriend',
+	    value: function requestFriend() {
+	      var username = this.props.user.username;
+	      var friend = this.props.friend;
+	      this.props.add(username, friend);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var friend = this.props.friend;
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        this.componentShouldRender() ? _react2.default.createElement(
+	          'button',
+	          { className: 'btn btn-info', onClick: this.requestFriend.bind(this) },
+	          'Add ',
+	          friend,
+	          ' as a friend'
+	        ) : null
+	      );
+	    }
+	  }]);
+
+	  return AddFriend;
+	}(_react2.default.Component);
+
+	;
+
+	var mapStateToProps = function mapStateToProps(state) {
+	  return {
+	    user: state.user,
+	    friends: state.friends
+	  };
+	};
+
+	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+	  return (0, _redux.bindActionCreators)({
+	    add: _addFriend.addFriend
+	  }, dispatch);
+	};
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(AddFriend);
+
+/***/ },
+/* 301 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.addFriend = undefined;
+
+	var _axios = __webpack_require__(264);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var addFriend = exports.addFriend = function addFriend(username, friend) {
+	  var endpoint = 'http://localhost:3000/api/friends';
+
+	  var request = _axios2.default.post(endpoint, {
+	    username: username,
+	    friend: friend,
+	    token: localStorage.getItem('bookfaceAuthToken')
+	  }).catch(function (err) {
+	    console.log('An error occured while fetching friends. ');
+	  });
+
+	  return {
+	    type: 'ADD_FRIEND',
+	    payload: request
+	  };
+	};
+
+/***/ },
+/* 302 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31557,7 +31760,7 @@
 
 	var _redux = __webpack_require__(182);
 
-	var _post = __webpack_require__(298);
+	var _post = __webpack_require__(303);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31588,7 +31791,7 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        null,
+	        { className: 'post-form' },
 	        _react2.default.createElement(
 	          'h5',
 	          null,
@@ -31653,7 +31856,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(PostForm);
 
 /***/ },
-/* 298 */
+/* 303 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31663,7 +31866,7 @@
 	});
 	exports.post = undefined;
 
-	var _axios = __webpack_require__(263);
+	var _axios = __webpack_require__(264);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
@@ -31683,7 +31886,7 @@
 	};
 
 /***/ },
-/* 299 */
+/* 304 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31698,9 +31901,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactRedux = __webpack_require__(175);
+	var _Friend = __webpack_require__(305);
 
-	var _redux = __webpack_require__(182);
+	var _Friend2 = _interopRequireDefault(_Friend);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31723,9 +31926,16 @@
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        'h5',
+	        'div',
 	        null,
-	        'FriendList View'
+	        _react2.default.createElement(
+	          'h5',
+	          null,
+	          'My Friends'
+	        ),
+	        this.props.friends.map(function (friend, i) {
+	          return _react2.default.createElement(_Friend2.default, { key: friend.id, friend: friend });
+	        })
 	      );
 	    }
 	  }]);
@@ -31735,20 +31945,66 @@
 
 	;
 
-	var mapStateToProps = function mapStateToProps(state) {
-	  return {
-	    user: state.user
-	  };
-	};
-
-	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-	  return (0, _redux.bindActionCreators)({}, dispatch);
-	};
-
-	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(FriendList);
+	exports.default = FriendList;
 
 /***/ },
-/* 300 */
+/* 305 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Friend = function (_React$Component) {
+	  _inherits(Friend, _React$Component);
+
+	  function Friend() {
+	    _classCallCheck(this, Friend);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Friend).apply(this, arguments));
+	  }
+
+	  _createClass(Friend, [{
+	    key: "render",
+	    value: function render() {
+	      var friend = this.props.friend;
+	      return _react2.default.createElement(
+	        "div",
+	        { className: "" },
+	        _react2.default.createElement(
+	          "h5",
+	          null,
+	          this.props.friend.friend
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Friend;
+	}(_react2.default.Component);
+
+	;
+
+	exports.default = Friend;
+
+/***/ },
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

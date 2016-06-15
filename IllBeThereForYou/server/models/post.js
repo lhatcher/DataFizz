@@ -20,6 +20,6 @@ const Post = sequelize.define('posts', {
 }, { freezeTableName: true });
 
 Post.belongsTo(User);
-// sequelize.sync({force: true});
+sequelize.sync();
 
 module.exports = Post;

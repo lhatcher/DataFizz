@@ -1,23 +1,17 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import Friend from './Friend';
 
 class FriendList extends React.Component {
+
   render() {
-    return <h5>FriendList View</h5>
+    return (
+      <div>
+        <h5>My Friends</h5>
+        {this.props.friends.map( (friend, i) => <Friend key={friend.id} friend={friend} />)}
+      </div>
+    );
   }
 };
 
-const mapStateToProps = (state) => {
-  return {
-    user: state.user,
-  };
-};
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({
-
-  }, dispatch);
-};
-
-export default connect(mapStateToProps,mapDispatchToProps)(FriendList);
+export default FriendList;

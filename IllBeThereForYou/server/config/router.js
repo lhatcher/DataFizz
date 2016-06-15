@@ -6,8 +6,8 @@ const utils = require('./utils');
 module.exports = (app, express) => {
   // GET REQUESTS
   app.get('/api/test', utils.isAuthenticated, handlers.test);
-  app.get('/api/feed', handlers.getPosts);
-  app.get('/api/myfriends', handlers.getFriends);
+  app.get('/api/feed', utils.isAuthenticated, handlers.getPosts);
+  app.get('/api/myfriends', utils.isAuthenticated, handlers.getFriends);
 
   // POST REQUESTS
   app.post('/api/signup', handlers.createUser);

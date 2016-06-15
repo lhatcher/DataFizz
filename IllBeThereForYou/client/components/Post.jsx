@@ -1,21 +1,23 @@
 import React from 'react';
+import AddFriend from './AddFriend';
 
 class Post extends React.Component {
   render() {
     let post = this.props.post;
     return (
-      <div className="container">
+      <div className="container-fluid">
         <div className="row">
           <div className="post-container">
             <div className="row">
-              <div claName="col-md-6 text-left">
+              <div className="col-md-6 text-left">
                 Posted by: {post.author}
               </div>
-              <div claName="col-md-6 text-right">
+              <div className="col-md-6 text-right">
                 {post.updatedAt}
               </div>
             </div>
             <p>{post.content}</p>
+            <AddFriend friend={post.author} />
           </div>
         </div>
       </div>

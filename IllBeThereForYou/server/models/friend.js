@@ -17,6 +17,6 @@ const Friend = sequelize.define('friends', {
   },
 }, { freezeTableName: true });
 
-Friend.sync({force: true});
+Friend.sync();
 
 module.exports = Friend;

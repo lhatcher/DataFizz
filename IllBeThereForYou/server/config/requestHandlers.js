@@ -22,6 +22,18 @@ module.exports = {
   },
 
   getFriends: (req, res) => {
+    let username = req.query.username;
+    User.find({where: {username: username} })
+      .then( (user) => {
+        if ( user ) {
+          Friend.findAll({where: {userId: user.dataValues.id} })
+            .then( (friends) => {
+              if ( friends ) {
+                res.json(friends);
+              }
+            });
+        }
+    });
 
   },
 
@@ -45,7 +57,6 @@ module.exports = {
           } else {
             bcrypt.genSalt(10, (err, salt) => {
               if ( salt ) {
-                console.log('======>> ', user);
                 bcrypt.hash(password, salt, (err, hash) => {
                   if (err) console.error(err);
                   if ( hash ) {
@@ -96,7 +107,7 @@ module.exports = {
 
               res.json({
                 success: true,
-                userId: newUser.id,
+                userId: user.id,
                 username: user.username,
                 firstName: user.firstName,
                 lastName: user.lastName,
@@ -164,11 +175,16 @@ module.exports = {
                     friend: friend.dataValues.username,
                   });
                 });
-              });
-            }).then((friend) => { 
-              res.json({
-                friend: addedFriend,
-              });
+              }).then(() => { 
+                  console.log('FRIEND---> ', friend)
+                  res.json({
+                    id: friend.dataValues.id,
+                    friend: addedFriend,
+                    createdAt: friend.dataValues.createdAt,
+                    updatedAt: friend.dataValues.updatedAt,
+                    userId: friend.dataValues.userId,
+                  });
+                });
             });
         }
       });
