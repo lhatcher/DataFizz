@@ -1,19 +1,19 @@
 
 const userInfo = (state = [], action) => {
 
-  if ( action.type === 'LOGIN' ) {
-    return action.payload.data;
-  }
+  switch ( action.type ) {
+    case 'LOGIN':
+      return action.payload.data;
 
-  if ( action.type === 'SIGNUP' ) {
-    return action.payload.data;
-  }
+    case 'SIGNUP':
+      return action.payload.data;
 
-  if ( action.type === 'LOGOUT') {
-    return {success: !action.payload.data.success};
-  }
+    case 'LOGOUT':
+      return {success: !action.payload.data.success};
 
-  return state;
+    default:
+      return state;
+  }
 };
 
 export default userInfo;
