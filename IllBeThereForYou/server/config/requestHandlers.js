@@ -9,12 +9,8 @@ const Friend = require('../models/friend');
 const utils = require('./utils');
 
 module.exports = {
-  // GET HANDLERS
-  test: (req, res) => {
-    console.log('Authentication System is working!');
-    res.send('Success!!!');
-  },  
 
+  // GET HANDLERS
   getPosts: (req, res) => {
     Post.findAll().then( (data) => {
       res.json(data.reverse());
@@ -34,8 +30,8 @@ module.exports = {
             });
         }
     });
-
   },
+  
 
   // POST HANDLERS
   createUser: (req, res) => {
@@ -176,7 +172,6 @@ module.exports = {
                   });
                 });
               }).then(() => { 
-                  console.log('FRIEND---> ', friend)
                   res.json({
                     id: friend.dataValues.id,
                     friend: addedFriend,
