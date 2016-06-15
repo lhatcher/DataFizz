@@ -17,8 +17,7 @@ class Navbar extends React.Component {
           <p className="navbar-text">Signed in as {this.props.username}</p>
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul className="nav navbar-nav">
-              <li className="active">Link <span className="sr-only">(current)</span></li>
-              <li><a href="#">Link</a></li>
+              
             </ul>
             <ul className="nav navbar-nav navbar-right">
               <li><Logout/></li>

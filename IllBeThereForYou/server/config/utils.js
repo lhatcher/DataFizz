@@ -24,8 +24,8 @@ module.exports = {
 
   // TOKEN VERIFICATION MIDDLEWARE
   isAuthenticated: (req, res, next) => {
-    let username = req.query.username;
-    let token = req.query.token;
+    let username = req.query.username || req.body.username;
+    let token = req.query.token || req.body.token;
 
     redisClient.get(username, (err, reply) => {
       if ( err ) {

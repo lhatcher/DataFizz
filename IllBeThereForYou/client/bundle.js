@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "436e3a0bbd2faa48b10d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "5f2162fb8b8fce857fe1"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -613,7 +613,7 @@
 
 	var _App2 = _interopRequireDefault(_App);
 
-	var _Home = __webpack_require__(292);
+	var _Home = __webpack_require__(293);
 
 	var _Home2 = _interopRequireDefault(_Home);
 
@@ -621,11 +621,11 @@
 
 	var _Login2 = _interopRequireDefault(_Login);
 
-	var _Signup = __webpack_require__(290);
+	var _Signup = __webpack_require__(291);
 
 	var _Signup2 = _interopRequireDefault(_Signup);
 
-	var _AuthComponent = __webpack_require__(306);
+	var _AuthComponent = __webpack_require__(307);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28976,11 +28976,11 @@
 
 	var _Login2 = _interopRequireDefault(_Login);
 
-	var _Signup = __webpack_require__(290);
+	var _Signup = __webpack_require__(291);
 
 	var _Signup2 = _interopRequireDefault(_Signup);
 
-	var _Home = __webpack_require__(292);
+	var _Home = __webpack_require__(293);
 
 	var _Home2 = _interopRequireDefault(_Home);
 
@@ -30424,7 +30424,7 @@
 	var content = __webpack_require__(284);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(289)(content, {});
+	var update = __webpack_require__(290)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(true) {
@@ -30449,6 +30449,7 @@
 	exports.i(__webpack_require__(286), "");
 	exports.i(__webpack_require__(287), "");
 	exports.i(__webpack_require__(288), "");
+	exports.i(__webpack_require__(289), "");
 
 	// module
 	exports.push([module.id, "", ""]);
@@ -30521,7 +30522,7 @@
 
 
 	// module
-	exports.push([module.id, "\n\n.post-container {\n  border: 1px solid black;\n}", ""]);
+	exports.push([module.id, "\n\n.post-container {\n  border: 1px solid rgba(0, 0, 0, 0.25);\n  margin: 3px 0px 3px 0px;\n  padding: 5px;\n}", ""]);
 
 	// exports
 
@@ -30549,13 +30550,27 @@
 
 
 	// module
-	exports.push([module.id, "\n.post-form {\n  padding: 10px;\n  background-color: white;\n  -webkit-box-shadow: 0px 13px 24px -5px rgba(0,0,0,0.31);\n  -moz-box-shadow: 0px 13px 24px -5px rgba(0,0,0,0.31);\n  box-shadow: 0px 13px 24px -5px rgba(0,0,0,0.31);\n}", ""]);
+	exports.push([module.id, "\n.post-form {\n  padding: 10px;\n  margin-bottom: 10px;\n  background-color: white;\n  -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.31);\n  -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.31);\n  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.31);\n}", ""]);
 
 	// exports
 
 
 /***/ },
 /* 289 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(285)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\n.friend-list {\n  padding: 3px;\n  -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.31);\n  -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.31);\n  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.31);\n}\n\n.friend {\n  background-color: white;\n  border: 1px solid rgba(0,0,0,0.25);\n  border-radius: 5px;\n  padding: 1px;\n  margin: 3px;\n}", ""]);
+
+	// exports
+
+
+/***/ },
+/* 290 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -30807,7 +30822,7 @@
 
 
 /***/ },
-/* 290 */
+/* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30828,7 +30843,7 @@
 
 	var _reactRouter = __webpack_require__(197);
 
-	var _signup = __webpack_require__(291);
+	var _signup = __webpack_require__(292);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30991,7 +31006,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Signup);
 
 /***/ },
-/* 291 */
+/* 292 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31023,7 +31038,7 @@
 	};
 
 /***/ },
-/* 292 */
+/* 293 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31042,23 +31057,23 @@
 
 	var _redux = __webpack_require__(182);
 
-	var _getPosts = __webpack_require__(293);
+	var _getPosts = __webpack_require__(294);
 
-	var _getFriends = __webpack_require__(294);
+	var _getFriends = __webpack_require__(295);
 
-	var _Navbar = __webpack_require__(295);
+	var _Navbar = __webpack_require__(296);
 
 	var _Navbar2 = _interopRequireDefault(_Navbar);
 
-	var _PostForm = __webpack_require__(302);
+	var _PostForm = __webpack_require__(303);
 
 	var _PostForm2 = _interopRequireDefault(_PostForm);
 
-	var _Feed = __webpack_require__(298);
+	var _Feed = __webpack_require__(299);
 
 	var _Feed2 = _interopRequireDefault(_Feed);
 
-	var _FriendList = __webpack_require__(304);
+	var _FriendList = __webpack_require__(305);
 
 	var _FriendList2 = _interopRequireDefault(_FriendList);
 
@@ -31158,7 +31173,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Home);
 
 /***/ },
-/* 293 */
+/* 294 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31193,7 +31208,7 @@
 	};
 
 /***/ },
-/* 294 */
+/* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31228,7 +31243,7 @@
 	};
 
 /***/ },
-/* 295 */
+/* 296 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31247,11 +31262,11 @@
 
 	var _redux = __webpack_require__(182);
 
-	var _Logout = __webpack_require__(296);
+	var _Logout = __webpack_require__(297);
 
 	var _Logout2 = _interopRequireDefault(_Logout);
 
-	var _Feed = __webpack_require__(298);
+	var _Feed = __webpack_require__(299);
 
 	var _Feed2 = _interopRequireDefault(_Feed);
 
@@ -31299,29 +31314,7 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'collapse navbar-collapse', id: 'bs-example-navbar-collapse-1' },
-	            _react2.default.createElement(
-	              'ul',
-	              { className: 'nav navbar-nav' },
-	              _react2.default.createElement(
-	                'li',
-	                { className: 'active' },
-	                'Link ',
-	                _react2.default.createElement(
-	                  'span',
-	                  { className: 'sr-only' },
-	                  '(current)'
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  'a',
-	                  { href: '#' },
-	                  'Link'
-	                )
-	              )
-	            ),
+	            _react2.default.createElement('ul', { className: 'nav navbar-nav' }),
 	            _react2.default.createElement(
 	              'ul',
 	              { className: 'nav navbar-nav navbar-right' },
@@ -31345,7 +31338,7 @@
 	exports.default = Navbar;
 
 /***/ },
-/* 296 */
+/* 297 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31366,9 +31359,9 @@
 
 	var _reactRouter = __webpack_require__(197);
 
-	var _logout = __webpack_require__(297);
+	var _logout = __webpack_require__(298);
 
-	var _Feed = __webpack_require__(298);
+	var _Feed = __webpack_require__(299);
 
 	var _Feed2 = _interopRequireDefault(_Feed);
 
@@ -31433,7 +31426,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Logout);
 
 /***/ },
-/* 297 */
+/* 298 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31461,7 +31454,7 @@
 	};
 
 /***/ },
-/* 298 */
+/* 299 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31476,7 +31469,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Post = __webpack_require__(299);
+	var _Post = __webpack_require__(300);
 
 	var _Post2 = _interopRequireDefault(_Post);
 
@@ -31502,7 +31495,7 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'container' },
+	        { className: 'container-fluid' },
 	        _react2.default.createElement(
 	          'h4',
 	          null,
@@ -31523,7 +31516,7 @@
 	exports.default = Feed;
 
 /***/ },
-/* 299 */
+/* 300 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31538,7 +31531,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _AddFriend = __webpack_require__(300);
+	var _AddFriend = __webpack_require__(301);
 
 	var _AddFriend2 = _interopRequireDefault(_AddFriend);
 
@@ -31560,9 +31553,27 @@
 	  }
 
 	  _createClass(Post, [{
+	    key: 'formatDate',
+	    value: function formatDate(dateString) {
+	      var timestamp = Date.parse(dateString);
+	      var date = new Date(timestamp);
+
+	      var months = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'Jun.', 'Jul.', 'Aug.', 'Sep.', 'Oct.', 'Nov.', 'Dec'];
+
+	      return {
+	        year: date.getFullYear(),
+	        month: months[date.getMonth()],
+	        day: date.getDate(),
+	        hours: date.getHours(),
+	        mins: date.getMinutes(),
+	        secs: date.getSeconds()
+	      };
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var post = this.props.post;
+	      var date = this.formatDate(post.updatedAt);
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'container-fluid' },
@@ -31579,18 +31590,35 @@
 	                'div',
 	                { className: 'col-md-6 text-left' },
 	                'Posted by: ',
-	                post.author
+	                _react2.default.createElement(
+	                  'b',
+	                  null,
+	                  post.author
+	                )
 	              ),
 	              _react2.default.createElement(
 	                'div',
 	                { className: 'col-md-6 text-right' },
-	                post.updatedAt
+	                'on ',
+	                date.month,
+	                ' ',
+	                date.day,
+	                ', ',
+	                date.year,
+	                ' @ ',
+	                date.hours,
+	                ':',
+	                date.mins
 	              )
 	            ),
 	            _react2.default.createElement(
-	              'p',
-	              null,
-	              post.content
+	              'div',
+	              { className: 'text-center' },
+	              _react2.default.createElement(
+	                'p',
+	                null,
+	                post.content
+	              )
 	            ),
 	            _react2.default.createElement(_AddFriend2.default, { friend: post.author })
 	          )
@@ -31607,7 +31635,7 @@
 	exports.default = Post;
 
 /***/ },
-/* 300 */
+/* 301 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31626,7 +31654,7 @@
 
 	var _reactRedux = __webpack_require__(175);
 
-	var _addFriend = __webpack_require__(301);
+	var _addFriend = __webpack_require__(302);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31707,7 +31735,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(AddFriend);
 
 /***/ },
-/* 301 */
+/* 302 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31741,7 +31769,7 @@
 	};
 
 /***/ },
-/* 302 */
+/* 303 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31760,7 +31788,7 @@
 
 	var _redux = __webpack_require__(182);
 
-	var _post = __webpack_require__(303);
+	var _post = __webpack_require__(304);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31856,7 +31884,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(PostForm);
 
 /***/ },
-/* 303 */
+/* 304 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31886,7 +31914,7 @@
 	};
 
 /***/ },
-/* 304 */
+/* 305 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31901,7 +31929,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Friend = __webpack_require__(305);
+	var _Friend = __webpack_require__(306);
 
 	var _Friend2 = _interopRequireDefault(_Friend);
 
@@ -31927,7 +31955,7 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        null,
+	        { className: 'text-center friend-list' },
 	        _react2.default.createElement(
 	          'h5',
 	          null,
@@ -31948,7 +31976,7 @@
 	exports.default = FriendList;
 
 /***/ },
-/* 305 */
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -31986,7 +32014,7 @@
 	      var friend = this.props.friend;
 	      return _react2.default.createElement(
 	        "div",
-	        { className: "" },
+	        { className: "friend" },
 	        _react2.default.createElement(
 	          "h5",
 	          null,
@@ -32004,7 +32032,7 @@
 	exports.default = Friend;
 
 /***/ },
-/* 306 */
+/* 307 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
